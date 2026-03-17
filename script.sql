@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS bookings.brand
 (
     brand_id uuid NOT NULL DEFAULT get_random_uuid(),
     title character varying(255) NOT NULL,
-    PRIMARY KEY (brand_id)
+    PRIMARY KEY (brand_id),
+    UNIQUE (title)
 );
 
 CREATE TABLE IF NOT EXISTS bookings.orders
@@ -76,7 +77,9 @@ CREATE TABLE IF NOT EXISTS bookings.users
 (
     user_id uuid NOT NULL,
     name character varying(255) NOT NULL,
-    PRIMARY KEY (user_id)
+    email character varying(255) NOT NULL,
+    PRIMARY KEY (user_id),
+    UNIQUE (email)
 );
 
 ALTER TABLE IF EXISTS bookings.products
