@@ -5,7 +5,7 @@ BEGIN;
 
 CREATE TABLE IF NOT EXISTS bookings.products
 (
-    product_id uuid NOT NULL DEFAULT get_random_uuid(),
+    product_id uuid NOT NULL DEFAULT gen_random_uuid(),
     brand_id uuid NOT NULL,
     title character varying(255) NOT NULL,
     description text,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS bookings.products
 
 CREATE TABLE IF NOT EXISTS bookings.brand
 (
-    brand_id uuid NOT NULL DEFAULT get_random_uuid(),
+    brand_id uuid NOT NULL DEFAULT gen_random_uuid(),
     title character varying(255) NOT NULL,
     PRIMARY KEY (brand_id),
     UNIQUE (title)
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS bookings.orders_products
 
 CREATE TABLE IF NOT EXISTS bookings.categories
 (
-    category_id uuid NOT NULL,
+    category_id uuid NOT NULL DEFAULT gen_random_uuid(),
     title character varying(255) NOT NULL,
     parent_category_id uuid,
     PRIMARY KEY (category_id),
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS bookings.products_category
 
 CREATE TABLE IF NOT EXISTS bookings.baskets
 (
-    basket_id uuid NOT NULL,
+    basket_id uuid NOT NULL DEFAULT gen_random_uuid(),
     user_id uuid NOT NULL,
     PRIMARY KEY (basket_id)
 );
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS bookings.baskets_products
 
 CREATE TABLE IF NOT EXISTS bookings.users
 (
-    user_id uuid NOT NULL,
+    user_id uuid NOT NULL DEFAULT gen_random_uuid(),
     name character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
     PRIMARY KEY (user_id),
